@@ -24,7 +24,7 @@ const { databaseMidleware, constraintsMiddleware, errorMiddleware } = require('.
 app.use(morgan('dev'))
 
 //Limitando entrada de dados
-app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.json({ limit: '50mb' })) //limite de tamanho
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 
 
