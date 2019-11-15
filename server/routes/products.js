@@ -10,7 +10,7 @@ router.post('/', wrapAsync(async (req, res, next) => {
         })
 }))
 
-router.post('/update', wrapAsync(async (req, res, next) => {
+router.post('/updateArduino', wrapAsync(async (req, res, next) => {
     let action = await Products.findOne({ barCode: req.body.barCode })
 
     if (action) {
