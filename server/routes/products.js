@@ -11,15 +11,24 @@ router.post('/', wrapAsync(async (req, res, next) => {
 }))
 
 router.post('/updateArduino', wrapAsync(async (req, res, next) => {
-    let action = await Products.findOne({ barCode: req.body.barCode })
+    let action = await Products.findOne({ rfid: req.body.rfid })
+    let modified = await Products.findOne({ update: 'modified' })
+
+    if (modified) {
+        let change = 'noModified'
+        modified['update'] = change
+        await Products.updateOne({ rfid: modified.rfid }, modified)
+    }
 
     if (action) {
         let storage = action.stock
         storage = storage - 1
 
         action['stock'] = storage
+        action['update'] = 'modified'
 
-        await Products.updateOne({ barCode: action.barCode }, action)
+        await Products.updateOne({ rfid: action.rfid }, action)
+
         res.send({ message: 'Atualizado com sucesso' })
     } else {
         res.status(500).send({ message: 'Não foi possível localizar o produto' })

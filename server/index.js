@@ -16,6 +16,8 @@ const morgan = require('morgan')
 //Verific dados e trata dados
 const bodyParser = require('body-parser')
 
+const cors = require('cors')
+
 //Database verifica se o banco esta conectado
 //Contrainsts verifica se o objeto esta entrando de forma valida
 //Error todos os erros do sistema
@@ -27,6 +29,15 @@ app.use(morgan('dev'))
 app.use(bodyParser.json({ limit: '50mb' })) //limite de tamanho
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 
+let corsOption = {
+  origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+}
+
+app.use(cors(corsOption))
+app.options('*', cors())
 
 app.use(databaseMidleware)
 

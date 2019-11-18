@@ -5,7 +5,7 @@ const { Products } = require('../../schemas')
 const { getHeaderRow, renameKeys } = require('./utils')
 
 const titles = {
-    'CODIGO DE BARRAS': 'barCode',
+    'RFID': 'rfid',
     'DESCRICAO': 'description',
     'QUANTIDADE': 'stock'
 }
@@ -37,15 +37,15 @@ const plainsParser = async (file) => {
     for (let i = 0; i < page.length; i++) {
         let e = renameKeys(titles, page[i])
 
-        if (!e.barCode)
+        if (!e.rfid)
             throw new Error('ERRO - Produto sem código de barras: ' + e.description)
 
         if (!e.description)
-            throw new Error('ERRO - Produto sem descrição: ' + e.barCode)
+            throw new Error('ERRO - Produto sem descrição: ' + e.rfid)
 
         if (!e.stock) {
             delete e.stock
-            warnings.push('AVISO - Produto com estoque inválido: ' + e.barCode + ' - ' + e.description)
+            warnings.push('AVISO - Produto com estoque inválido: ' + e.rfid + ' - ' + e.description)
         }
 
         products.push(e)
@@ -64,10 +64,10 @@ const fillDatabases = async (products, warnings) => {
     for (let i = 0; i < products.length; i++) {
         let e = products[i]
 
-        let p = await Products.updateOne({ barCode: e.barCode }, e, { upsert: true })
+        let p = await Products.updateOne({ rfid: e.rfid }, e, { upsert: true })
             .catch(error => {
                 console.log('[ERROR]', error)
-                throw new Error('ERRO - Não foi possível inserir o produto: ' + e.barCode + '. Verifique se já existe o código de barras.')
+                throw new Error('ERRO - Não foi possível inserir o produto: ' + e.rfid + '. Verifique se já existe o código de barras.')
             })
 
         if (typeof p === 'object' && 'upserted' in p)

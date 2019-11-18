@@ -2,7 +2,11 @@ const mongoose = require('mongoose')
 const schema = mongoose.Schema
 
 const ProductsSchema = new schema({
-    barCode: {
+    update: {
+        type: String,
+        default: 'noModified'
+    },
+    rfid: {
         type: String,
         required: true,
         unique: true
