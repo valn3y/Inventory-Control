@@ -1,5 +1,5 @@
 module.exports = {
     UPDATE: {
-        rfid: { presence: { message: '^Código de barras é necessário.' }, type: 'string' }
+        rfid: { presence: { message: '^RFID é necessário.' }, type: 'string' }
     }
 }

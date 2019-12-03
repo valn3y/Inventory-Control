@@ -11,7 +11,7 @@ router.post('/', wrapAsync(async (req, res, next) => {
 }))
 
 router.post('/updateArduino', wrapAsync(async (req, res, next) => {
-    console.log(req.body)
+    console.log(req)
     let action = await Products.findOne({ rfid: req.body.rfid })
     let modified = await Products.findOne({ update: 'modified' })
 
