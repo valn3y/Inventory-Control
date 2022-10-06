@@ -1,0 +1,23 @@
+.Card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 90%;
+    box-shadow: 1px 1px 1px black;
+    background: darkgray;
+}
+
+.Card-infos{
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.Card-MainInfos{
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

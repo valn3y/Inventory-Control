@@ -1,0 +1,81 @@
+.Before{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #282c37;
+    min-height: 100vh;
+}
+
+.Main{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+    flex-direction: column;
+    background-color: #282c37;
+}
+
+.Header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+.SubHeader{
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.SubHeader-Main{
+    flex: 1;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.Paper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: darkgray;
+    border: 5px solid;
+    border-radius: 5px;
+    width: 90%;
+    box-shadow: 4px 4px 4px gray;
+    margin-bottom: 100px;
+}
+
+.Paper-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 90%;
+}
+
+.Title-header{
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.Title-MainHeader{
+    flex: 2;
+    justify-content: center;
+    align-items: center;
+}
+
+.Text-header{
+    font-size: x-large;
+    text-align: center;
+}
+
+.Line {
+    border-top: 1px solid black;
+    width: 95%;
+}
